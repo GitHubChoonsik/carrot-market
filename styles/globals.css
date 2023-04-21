@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-html::-webkit-scrollbar {
+/* Hide scrollbar */
+body {
+  -ms-overflow-style: None;
+}
+::-webkit-scrollbar {
   display: none;
 }

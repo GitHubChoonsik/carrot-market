@@ -30,6 +30,7 @@ async function handler(
       },
     },
   });
+  console.log(payload);
   if (phone) {
     // const message = await twilioClient.messages.create({
     //   messagingServiceSid: process.env.TWILIO_MSID,
@@ -67,7 +68,7 @@ async function handler(
 }
 
 export default withHandler({
-  method: "POST",
+  methods: ["POST"],
   handler,
   isPrivate: false,
 });

@@ -15,7 +15,6 @@ async function handler(
     ok: true,
     profile,
   });
-  res.status(200).end();
 }
 
 export default withApiSession(

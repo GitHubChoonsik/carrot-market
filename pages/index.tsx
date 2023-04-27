@@ -9,7 +9,7 @@ import { Product, User } from "@prisma/client";
 
 interface ProductWithCount extends Product {
   _count: {
-    Fav: number;
+    records: number;
   };
 }
 
@@ -34,7 +34,7 @@ const Home: NextPage = () => {
             title={product.name}
             price={product.price}
             comments={1}
-            hearts={product._count.Fav}
+            hearts={product._count.records}
           />
         ))}
         <FloatingButton href="/products/upload">

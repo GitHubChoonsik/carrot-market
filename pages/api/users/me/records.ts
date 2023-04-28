@@ -35,7 +35,19 @@ async function handler(
         kind: recordKind,
       },
       include: {
-        product: true,
+        product: {
+          include: {
+            _count: {
+              select: {
+                records: {
+                  where: {
+                    kind: Kind.Fav,
+                  },
+                },
+              },
+            },
+          },
+        },
       },
     });
     res.json({

@@ -26,7 +26,7 @@ export default function withHandler({
       return res.status(405).end();
     }
     if (isPrivate && !req.session.user) {
-      res.status(401).json({
+      return res.status(401).json({
         ok: false,
         error: "Please login",
       });

@@ -3,11 +3,10 @@ import Head from "next/head";
 import FloatingButton from "@/components/floating-button";
 import Item from "@/components/item";
 import Layout from "@/components/layout";
-import useUser from "@/libs/client/useUser";
 import useSWR from "swr";
 import { Product, User } from "@prisma/client";
 
-interface ProductWithCount extends Product {
+export interface ProductWithCount extends Product {
   _count: {
     records: number;
   };
@@ -19,7 +18,6 @@ interface ProductsResponse {
 }
 
 const Home: NextPage = () => {
-  const { user, isLoading } = useUser();
   const { data } = useSWR<ProductsResponse>("/api/products");
   return (
     <Layout title="홈" hasTabBar>

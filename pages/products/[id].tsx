@@ -8,6 +8,7 @@ import { Product, User } from "@prisma/client";
 import useMutation from "@/libs/client/useMutation";
 import { cls } from "@/libs/client/utils";
 import useUser from "@/libs/client/useUser";
+import Image from "next/image";
 
 interface ProductWithUser extends Product {
   user: User;
@@ -37,23 +38,22 @@ const ItemDetail: NextPage = () => {
     <Layout canGoBack>
       <div className="px-4  py-4">
         <div className="mb-8">
-          {data?.product.image ? (
-            <img
+          <div className="relative pb-80">
+            <Image
+              alt="product"
               src={`https://imagedelivery.net/zMiXC-25wSvKPvlBLHM2Fg/${data?.product.image}/public`}
-              className="h-96"
+              className="bg-slate-300 object-cover"
+              fill={true}
             />
-          ) : (
-            <div className="h-96 bg-slate-300" />
-          )}
+          </div>
           <div className="flex cursor-pointer py-3 border-t border-b items-center space-x-3">
-            {data?.product.user.avatar ? (
-              <img
-                src={`https://imagedelivery.net/zMiXC-25wSvKPvlBLHM2Fg/${data?.product.user.avatar}/avatar`}
-                className="w-12 h-12 rounded-full"
-              />
-            ) : (
-              <div className="w-12 h-12 rounded-full bg-slate-300" />
-            )}
+            <Image
+              alt="avatar"
+              width={48}
+              height={48}
+              src={`https://imagedelivery.net/zMiXC-25wSvKPvlBLHM2Fg/${data?.product.user.avatar}/avatar`}
+              className="w-12 h-12 rounded-full bg-slate-300"
+            />
             <div>
               <p className="text-sm font-medium text-gray-700">
                 {data?.product?.user?.name}
